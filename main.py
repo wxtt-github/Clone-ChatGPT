@@ -5,12 +5,6 @@ from langchain.memory import ConversationBufferMemory
 st.title("💬Clone ChatGPT")
 
 with st.sidebar:
-    # 换行需要在\n前面加两个空格
-    openai_api_key = st.text_input("请输入OpenAI API密钥：  \n(使用系统环境变量输os即可)", type="password")
-    st.markdown("[获取OpenAI API密钥](https://platform.openai.com/api-keys)")
-    openai_base_url = st.text_input("请输入第三方base_url，  \n若为OpenAI API密钥则留空", type="default")
-    st.markdown("```https://api.aigc369.com/v1```  \n~~方便我复制base_url~~")
-
     # 使用HTML和CSS创建一个绿色按钮，并设置按钮样式
     st.markdown(
         """
@@ -24,7 +18,7 @@ with st.sidebar:
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            width: 220px; /* 固定宽度 */
+            width: 260px; /* 固定宽度 */
             text-align: center;
         }
         div.stButton > button:hover {
@@ -36,8 +30,16 @@ with st.sidebar:
             color: #ffffff; /* 点击时保持悬浮状态的字体颜色 */
         }
         </style>
-        """,unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
     new_chat = st.button("New Chat✍")
+
+    # 换行需要在\n前面加两个空格
+    openai_api_key = st.text_input("请输入OpenAI API密钥：  \n(使用系统环境变量输os即可)", type="password")
+    st.markdown("[获取OpenAI API密钥](https://platform.openai.com/api-keys)")
+    openai_base_url = st.text_input("请输入第三方base_url，  \n若为OpenAI API密钥则留空", type="default")
+    st.markdown("```https://api.aigc369.com/v1```  \n~~方便我复制base_url~~")
+
+    st.markdown("点击[📞](https://github.com/wxtt-github/Clone-ChatGPT)提起issue联系我。")
 
 # 点击新建聊天按钮删除memory和messages
 if new_chat:
